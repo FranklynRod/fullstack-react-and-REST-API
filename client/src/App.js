@@ -1,18 +1,15 @@
 
-// import Header from './component/Header'
-import './App.css';
-
-fetch('http://localhost:5000/api/courses')
-.then(console.log(courses))
-
+import Header from './component/Header'
+import "./styles/reset.css"
+import './styles/global.css';
 
 
 
 function App() {
   return (
     <div >
-      {/* <Header/> */}
-      <Routes>
+      <Header/>
+      {/* <Routes>
         <Route path="/" element={<Courses />} />
         <Route path="/courses/create" element={<CreateCourses/>} />
         <Route path="/courses/:id" element={<CoursesDetail/>}/>
@@ -22,7 +19,7 @@ function App() {
         <Route path="/signup" element={<UserSignUp />} />
         <Route path="/signout" element={<UserSignOut  />} />
         <Route path="*" element={<PhotoNotFound />} />
-      </Routes>
+      </Routes> */}
 
 
       
