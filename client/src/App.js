@@ -1,15 +1,14 @@
 
-import Header from './component/Header'
+import Header from './component/Header';
 import Courses from './component/Courses';
+import CourseDetail from './component/CourseDetail';
+import CreateCourse from './component/CreateCourse';
+import UpdateCourse from './component/Course';
 import { Routes, Route } from 'react-router-dom';
+import ErrorDisplay from './component/ErrorDisplay';
+import PrivateRoute from './component/PrivateRoute';
 import "./styles/reset.css"
 import './styles/global.css';
-import ErrorDisplay from './component/ErrorDisplay';
-
-
-
-
-
 
 function App() {
   
@@ -17,22 +16,24 @@ function App() {
   return (
     <div >
       <Header/>
-      <Courses/>
       <Routes>
         <Route path="/error" element={<ErrorDisplay />} />
         <Route path="/" element={<Courses />} />
-        {/* <Route path="/courses/create" element={<CreateCourses/>} />
-        <Route path="/courses/:id" element={<CoursesDetail/>}/>
-        <Route path="/courses/:id/update" element={<UpdateCourse />}/>
-
+        <Route path="/courses/:id" element={<CourseDetail/>}/>
+    
+{/* 
         <Route path="/signin" element={<UserSignIn />} />
         <Route path="/signup" element={<UserSignUp />} />
-        <Route path="/signout" element={<UserSignOut  />} />
-        <Route path="*" element={<PhotoNotFound />} /> */}
+        <Route path="/signout" element={<UserSignOut  />} /> */}
+
+        <Route element={<PrivateRoute />}>   
+          <Route path="/courses/create" element={<CreateCourse/>} />
+          <Route path="/courses/:id/update" element={<UpdateCourse />}/>
+        </Route>
+
+        {/* <Route path="*" element={<PhotoNotFound />} /> */}
       </Routes>
 
-
-      
     </div>
   );
 }

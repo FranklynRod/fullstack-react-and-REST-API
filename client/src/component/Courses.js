@@ -12,12 +12,13 @@ const Courses = () => {
     .then(res => res.json())
     .then(data => setCourses(data))
     .catch(err => navigate('/error'))
-  }, [])
+  }, )
 
   return (
    <div className="wrap main--grid">
 
-      {courses.map((course) => (<Link className="course--module course--link" key={course.id} to={`/courses/${course.id}`}>
+      {courses.map((course) => (
+              <Link className="course--module course--link" key={course.id} to={`/courses/${course.id}`}>
                     <h2 className="course--label">Course</h2>
                     <h3 className="course--title">{course.title}</h3>
                 </Link>))
