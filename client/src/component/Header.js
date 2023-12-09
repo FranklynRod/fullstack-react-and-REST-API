@@ -4,7 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 
 
 const Header = () => {
-    const {authUser} = useContext(UserContext)
+    const authUser = useContext(UserContext);
     const location = useLocation();
 
   return (

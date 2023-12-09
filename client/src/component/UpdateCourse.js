@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const UpdateCourse = () => {
     // const handleCancel = (e)=>{
@@ -29,7 +29,7 @@ const UpdateCourse = () => {
             </div>
         </div>
         <button className="button" type="submit">Update Course</button>
-        <button className="button button-secondary" onclick={handleCancel}>Cancel</button>
+        <button className="button button-secondary" >Cancel</button>
     </form>
 </div>
   )

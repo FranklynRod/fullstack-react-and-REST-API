@@ -32,12 +32,12 @@ const CreateCourse = () => {
       
             } else if (response.status === 400){
               const data = await response.json();
+              console.log(data)
               setErrors(data.errors);
             } else{
               throw new Error();
             }
         }catch (error){
-          setErrors(['Error. Try again'])
           navigate("/error")
           }
         } 
@@ -53,7 +53,7 @@ const CreateCourse = () => {
   return (
             <div className="wrap">
                 <h2>Create Course</h2>
-                <ErrorDisplay error />
+                <ErrorDisplay errors={errors} />
                 <form onclick={handleSubmit}>
                     <div className="main--flex">
                         <div>

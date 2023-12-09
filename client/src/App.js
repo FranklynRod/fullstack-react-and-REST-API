@@ -3,7 +3,7 @@ import Header from './component/Header';
 import Courses from './component/Courses';
 import CourseDetail from './component/CourseDetail';
 import CreateCourse from './component/CreateCourse';
-import UpdateCourse from './component/Course';
+import UpdateCourse from './component/UpdateCourse';
 import { Routes, Route } from 'react-router-dom';
 import ErrorDisplay from './component/ErrorDisplay';
 import PrivateRoute from './component/PrivateRoute';
