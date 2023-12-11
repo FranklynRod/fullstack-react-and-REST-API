@@ -3,7 +3,7 @@ import React from 'react'
 const ErrorDisplay = ({errors}) => {
     let errorsDisplay = null
 
-    if (errors.length){
+    if (errors){
       console.log(errors.length)
         errorsDisplay = (
             <>

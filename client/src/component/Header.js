@@ -21,7 +21,7 @@ const Header = () => {
                     </>
                         :
                         <>
-                         <ul class="header--signedout">
+                         <ul className="header--signedout">
                         <li><Link to="/signup">Sign Up</Link></li>
                         <li><Link to="/signin" state={{from:location.pathname}}> Sign In</Link></li>
                       
