@@ -12,7 +12,7 @@
         };
         if (body){
             options.body = JSON.stringify(body);
-            options.headers["Content-Type"] = "applications/json; charset=utf-8"
+            options.headers["Content-Type"] = "application/json; charset=utf-8";
         }
         if (credentials){
             const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);

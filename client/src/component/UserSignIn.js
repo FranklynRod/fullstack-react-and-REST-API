@@ -22,8 +22,8 @@ const UserSignIn = () => {
         from = location.state.from;
 
       const credentials = {
-        emailAddress: emailAddress.current.defaultValue,
-        password: password.current.defaultValue
+        emailAddress: emailAddress.current.value,
+        password: password.current.value
       }
       try{ 
         const user = await actions.signIn(credentials)

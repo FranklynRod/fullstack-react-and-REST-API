@@ -19,10 +19,10 @@ const UserSignUp = () => {
     event.preventDefault();
 
     const user = {
-      firstName: firstName.current.defaultValue,
-      lastName: lastName.current.defaultValue,
-      emailAddress: emailAddress.current.defaultValue,
-      password: password.current.defaultValue
+      firstName: firstName.current.value,
+      lastName: lastName.current.value,
+      emailAddress: emailAddress.current.value,
+      password: password.current.value
     }
    
     try {
