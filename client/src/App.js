@@ -20,13 +20,9 @@ function App() {
     <div >
       <Header/>
       <Routes>
-        
         <Route path="/" element={<Courses />} />
         <Route path="/courses/:id" element={<CourseDetail/>}/>
         <Route path="/signin" element={<UserSignIn />} />
-    
-
-       
         <Route path="/signup" element={<UserSignUp />} />
         <Route path="/signout" element={<UserSignOut  />} />
 

@@ -6,21 +6,21 @@ import { api } from '../utils/apiHelper';
 
 
 const CreateCourse = () => {
-    const navigate = useNavigate;
     const {authUser} = useContext(UserContext)
+    const navigate = useNavigate();
     // State
     const title = useRef(null);
     const courseDescription = useRef(null);
     const estimatedTime = useRef(null);
     const materialsNeeded= useRef(null);
     const [errors, setErrors] = useState([]);
-  
 
     //Event handlers
     const handleSubmit = async (e)=>{
         e.preventDefault();
         
         const user = {
+            id: authUser.id,
             title: title.current.value,
             courseDescription: courseDescription.current.value,
             estimatedTime: estimatedTime.current.value,
@@ -29,11 +29,10 @@ const CreateCourse = () => {
           try {
             const response = await api("/api/courses, 'POST", user, authUser)
             if (response.status === 201){
+              console.log(`${user.title} is successfully created!`)
              navigate("/");
-      
             } else if (response.status === 400){
               const data = await response.json();
-              console.log(data)
               setErrors(data.errors);
             } else{
               throw new Error();
@@ -42,10 +41,12 @@ const CreateCourse = () => {
           navigate("/error")
           }
         } 
+
     const handleCancel = (e)=>{
         e.preventDefault();
         navigate("/")
     }
+
   return (
             <div className="wrap">
                 <h2>Create Course</h2>

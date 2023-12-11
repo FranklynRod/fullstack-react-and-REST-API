@@ -1,17 +1,40 @@
 import React from 'react';
-import ErrorDisplay from './ErrorDisplay';
+// import ErrorDisplay from './ErrorDisplay';
 import { useNavigate} from 'react-router-dom';
 
 const UpdateCourse = () => {
     const navigate = useNavigate;
+    // useEffect(()=>{
 
-    // const handleSubmit = (e)={
-
-    // }
+    // },[])
+//    const handleSubmit = async (e)=>{
+//     e.preventDefault();
+        
+//     const user = {
+//         title: title.current.value,
+//         courseDescription: courseDescription.current.value,
+//         estimatedTime: estimatedTime.current.value,
+//         materialsNeeded: materialsNeeded.current.value
+//       }
+//       try {
+//         const response = await api("/api/courses, 'POST", user, authUser)
+//         if (response.status === 201){
+//          navigate("/");
+  
+//         } else if (response.status === 400){
+//           const data = await response.json();
+//           console.log(data)
+//           setErrors(data.errors);
+//         } else{
+//           throw new Error();
+//         }
+//     } catch (error){
+//       navigate("/error")
+//       }
+//     } 
     const handleCancel = (e)=>{
         e.preventDefault();
         navigate("/")
-    
     } 
   return (
     <div className="wrap">

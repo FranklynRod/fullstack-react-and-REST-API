@@ -1,12 +1,13 @@
 import React, {useRef, useContext, useState} from 'react'
+import { useNavigate, useLocation, Link} from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import ErrorDisplay from './ErrorDisplay';
-import { useNavigate, useLocation, Link} from 'react-router-dom';
+
 
 
 const UserSignIn = () => {
     const {actions} = useContext(UserContext)
-    const navigate = useNavigate;
+    const navigate = useNavigate();
     const location = useLocation();
     console.log(location)
 

@@ -15,8 +15,8 @@ const UserSignUp = () => {
   const [errors, setErrors] = useState([]);
 
   // event handlers
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const user = {
       firstName: firstName.current.value,
@@ -37,15 +37,15 @@ const UserSignUp = () => {
         const data = await response.json();
         setErrors(data.errors);
       } else{
-        throw new Error()
+        throw new Error();
       }
   }catch (error){
     console.log(error);
-    navigate("/error")
+    navigate("/error");
     }
   } 
-  const handleCancel = (event) => {
-    event.preventDefault();
+  const handleCancel = (e) => {
+    e.preventDefault();
     navigate("/")
   }
   return (

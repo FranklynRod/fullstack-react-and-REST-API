@@ -4,7 +4,6 @@ const ErrorDisplay = ({errors}) => {
     let errorsDisplay = null;
 
     if (errors){
-      console.log(errors.length)
         errorsDisplay = (
             <>
             <div className="validation--errors">
