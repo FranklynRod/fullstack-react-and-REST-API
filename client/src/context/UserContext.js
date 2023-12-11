@@ -14,7 +14,8 @@ export const UserProvider = (props) => {
   const signIn = async (credentials) => {
     const response = await api("/users", "GET", null, credentials)
     if (response.status === 200){
-      const user = await response.json();
+      const res = response.json();
+      const user = await res;
       setAuthUser(user);
       Cookies.set("authenticatedUser",JSON.stringify(user),{expires: 1});
       console.log(`SUCCESS ${user.username} is now signed in`)

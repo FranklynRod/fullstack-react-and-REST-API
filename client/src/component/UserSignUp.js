@@ -28,7 +28,8 @@ const UserSignUp = () => {
     try {
       const response = await api("/users", 'POST', user)
       if (response.status === 201){
-       console.log(`${user.emailAddress} is successfully signed up and autenticated!`)
+       console.log(`${user.emailAddress} is successfully signed up and authenticated!`)
+       console.log(actions.signIn(user))
        await actions.signIn(user);
        navigate("/");
 
