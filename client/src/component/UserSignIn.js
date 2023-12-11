@@ -1,5 +1,6 @@
 import React, {useRef, useContext, useState} from 'react'
 import UserContext from '../context/UserContext';
+import ErrorDisplay from './ErrorDisplay';
 import { useNavigate, useLocation, Link} from 'react-router-dom';
 
 
@@ -32,7 +33,7 @@ const UserSignIn = () => {
         }else {
           setErrors(["Sign-in was unsuccessful"])
         }
-      } catch (errors){
+      } catch (error){
         // console.log(error);
         navigate("/error");
       }
@@ -47,6 +48,7 @@ const UserSignIn = () => {
   return (
     <div className="htmlForm--centered" >
                 <h2>Sign In</h2>
+                <ErrorDisplay errors={errors} />
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="emailAddress">Email Address</label>
                     <input id="emailAddress" name="emailAddress" type="email" ref={emailAddress} defaultValue=""/>

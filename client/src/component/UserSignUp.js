@@ -5,7 +5,7 @@ import ErrorDisplay from './ErrorDisplay';
 import { api } from '../utils/apiHelper';
 
 const UserSignUp = () => {
-  const actions = useContext(UserContext)
+  const {actions} = useContext(UserContext)
   const navigate = useNavigate();
   // State
   const firstName = useRef(null);

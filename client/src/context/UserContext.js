@@ -18,7 +18,7 @@ export const UserProvider = (props) => {
       const user = await res;
       setAuthUser(user);
       Cookies.set("authenticatedUser",JSON.stringify(user),{expires: 1});
-      console.log(`SUCCESS ${user.username} is now signed in`)
+      console.log(`SUCCESS ${user.emailAddress} is now signed in`)
       return user
     } else if (response.status === 401){
      return null
