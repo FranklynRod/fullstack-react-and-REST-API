@@ -55,7 +55,7 @@ const CreateCourse = () => {
             <div className="wrap">
                 <h2>Create Course</h2>
                 {/* <ErrorDisplay errors={errors} /> */}
-                <form onClick={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="main--flex">
                         <div>
                             <label for="courseTitle">Course Title</label>

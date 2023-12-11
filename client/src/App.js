@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router-dom';
+import "./styles/reset.css"
+import './styles/global.css';
 
 import Header from './component/Header';
 import Courses from './component/Courses';
@@ -5,15 +8,10 @@ import CourseDetail from './component/CourseDetail';
 import CreateCourse from './component/CreateCourse';
 import UpdateCourse from './component/UpdateCourse';
 import UserSignIn from './component/UserSignIn';
-import { Routes, Route } from 'react-router-dom';
 import ErrorDisplay from './component/ErrorDisplay';
 import PrivateRoute from './component/PrivateRoute';
-import "./styles/reset.css"
-import './styles/global.css';
 
 function App() {
-  
-  
   return (
     <div >
       <Header/>
@@ -35,7 +33,7 @@ function App() {
           <Route path="/courses/:id/update" element={<UpdateCourse />}/>
         </Route> */}
 
-        {/* <Route path="*" element={<PhotoNotFound />} /> */}
+        {/* <Route path="*" element={<NotFound />} /> */}
         <Route path="/error" element={<ErrorDisplay />} />
       </Routes>
 
