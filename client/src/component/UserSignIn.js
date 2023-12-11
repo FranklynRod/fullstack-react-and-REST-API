@@ -1,10 +1,10 @@
 import React, {useRef, useContext, useState} from 'react'
 import UserContext from '../context/UserContext';
-import { useNavigate, useLocation , Link} from 'react-router-dom';
+import { useNavigate, useLocation, Link} from 'react-router-dom';
 
 
 const UserSignIn = () => {
-    const actions = useContext(UserContext)
+    const {actions} = useContext(UserContext)
     const navigate = useNavigate;
     const location = useLocation();
     console.log(location)
@@ -22,11 +22,11 @@ const UserSignIn = () => {
         from = location.state.from;
 
       const credentials = {
-        emailAddress: emailAddress.current.value,
-        password: password.current.value
+        emailAddress: emailAddress.current.defaultValue,
+        password: password.current.defaultValue
       }
       try{ 
-        const user = await actions.signin(credentials)
+        const user = await actions.signIn(credentials)
         if(user){
           navigate(from);
         }else {
@@ -45,18 +45,18 @@ const UserSignIn = () => {
     }
 
   return (
-    <div className="form--centered" >
+    <div className="htmlForm--centered" >
                 <h2>Sign In</h2>
                 <form onSubmit={handleSubmit}>
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" name="emailAddress" type="email" value="" ref={emailAddress}/>
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" value="" ref={password}/>
+                    <label htmlFor="emailAddress">Email Address</label>
+                    <input id="emailAddress" name="emailAddress" type="email" ref={emailAddress} defaultValue=""/>
+                    <label htmlFor="password">Password</label>
+                    <input id="password" name="password" type="password" ref={password} defaultValue=""/>
                     <button className="button" type="submit">Sign In</button>
-                    <button className="button button-secondary" onclick={handleCancel}>Cancel</button>
+                    <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
                 </form>
                 
-                <p>Don't have a user account? Click here to <Link><a to="/signup">sign up</a></Link>!</p> 
+                <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p> 
                 
             </div>
   )

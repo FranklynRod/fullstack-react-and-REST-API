@@ -1,6 +1,8 @@
 import React, {useRef, useContext, useState} from 'react'
 import UserContext from '../context/UserContext';
-import { useNavigate, useLocation , Link} from 'react-router-dom';
+import { useNavigate,  Link} from 'react-router-dom';
+import ErrorDisplay from './ErrorDisplay';
+import { api } from '../utils/apiHelper';
 
 const UserSignUp = () => {
   const actions = useContext(UserContext)
@@ -17,18 +19,18 @@ const UserSignUp = () => {
     event.preventDefault();
 
     const user = {
-      firstName: firstName.current.value,
-      lastName: lastName.current.value,
-      emailAddress: emailAddress.current.value,
-      password: password.current.value
+      firstName: firstName.current.defaultValue,
+      lastName: lastName.current.defaultValue,
+      emailAddress: emailAddress.current.defaultValue,
+      password: password.current.defaultValue
     }
    
     try {
-      const response = await api("/users, 'POST", user)
+      const response = await api("/users", 'POST', user)
       if (response.status === 201){
-       console.log(`${user.username} is successfully signed up and autenticated!`)
+       console.log(`${user.emailAddress} is successfully signed up and autenticated!`)
        await actions.signIn(user);
-       navigate("/authenticated");
+       navigate("/");
 
       } else if (response.status === 400){
         const data = await response.json();
@@ -46,20 +48,22 @@ const UserSignUp = () => {
     navigate("/")
   }
   return (
-    <div className="form--centered">
+    <div className="htmlForm--centered">
                 <h2>Sign Up</h2>
+                 <ErrorDisplay errors={errors} />
                 <form onSubmit={handleSubmit}>
-                    <label for="firstName">First Name</label>
-                    <input id="firstName" name="firstName" type="text" value=""/>
-                    <label for="lastName">Last Name</label>
-                    <input id="lastName" name="lastName" type="text" value=""/>
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" name="emailAddress" type="email" value=""/>
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" value=""/>
-                    <button className="button" type="submit">Sign Up</button><button className="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
+                    <label htmlFor="firstName">First Name</label>
+                    <input id="firstName" name="firstName" type="text" ref={firstName} defaultValue="" />
+                    <label htmlFor="lastName">Last Name</label>
+                    <input id="lastName" name="lastName" type="text" ref={lastName} defaultValue="" />
+                    <label htmlFor="emailAddress">Email Address</label>
+                    <input id="emailAddress" name="emailAddress" type="email" ref={emailAddress} defaultValue="" />
+                    <label htmlFor="password">Password</label>
+                    <input id="password" name="password" type="password" ref={password} defaultValue=""/>
+                    <button className="button" type="submit">Sign Up</button>
+                    <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
                 </form>
-                <p>Already have a user account? Click here to <a href="sign-in.html">sign in</a>!</p>
+                <p>Already have a user account? Click here to <Link to="/signin">sign in</Link>!</p>
             </div>
   )
 }

@@ -12,7 +12,7 @@ const Courses = () => {
     .then(res => res.json())
     .then(data => setCourses(data))
     .catch(err => navigate('/error'))
-  }, )
+  },[])
 
   return (
    <div className="wrap main--grid">

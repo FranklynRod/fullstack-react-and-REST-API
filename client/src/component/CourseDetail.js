@@ -9,7 +9,7 @@ const CourseDetail = () => {
     const [courses, setCourses] = useState({})
     const [errors, setErrors] = useState({})
 
-    const authUser = useContext(UserContext)
+    const {authUser} = useContext(UserContext)
     const navigate = useNavigate();
     const {id} = useParams()
 

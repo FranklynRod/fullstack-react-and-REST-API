@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ErrorDisplay = ({errors}) => {
-    let errorsDisplay = null
+    let errorsDisplay = null;
 
     if (errors){
       console.log(errors.length)

@@ -7,7 +7,7 @@ import { api } from '../utils/apiHelper';
 
 const CreateCourse = () => {
     const navigate = useNavigate;
-    const authUser = useContext(UserContext)
+    const {authUser} = useContext(UserContext)
     // State
     const title = useRef(null);
     const courseDescription = useRef(null);
@@ -38,39 +38,34 @@ const CreateCourse = () => {
             } else{
               throw new Error();
             }
-        }catch (error){
+        } catch (error){
           navigate("/error")
           }
         } 
-
-
     const handleCancel = (e)=>{
         e.preventDefault();
         navigate("/")
-
     }
-
-
   return (
             <div className="wrap">
                 <h2>Create Course</h2>
-                {/* <ErrorDisplay errors={errors} /> */}
+                <ErrorDisplay errors={errors} />
                 <form onSubmit={handleSubmit}>
                     <div className="main--flex">
                         <div>
-                            <label for="courseTitle">Course Title</label>
-                            <input id="courseTitle" name="courseTitle" type="text" value="" ref={title}/>
+                            <label htmlFor="courseTitle">Course Title</label>
+                            <input id="courseTitle" name="courseTitle" type="text" ref={title} defaultValue=""/>
 
                             {/* <p>{authUser.firstName}{authUser.lastName}</p> */}
 
-                            <label for="courseDescription">Course Description</label>
+                            <label htmlFor="courseDescription">Course Description</label>
                             <textarea id="courseDescription" name="courseDescription" ref={courseDescription}></textarea>
                         </div>
                         <div>
-                            <label for="estimatedTime">Estimated Time</label>
-                            <input id="estimatedTime" name="estimatedTime" type="text" value="" ref={estimatedTime}/>
+                            <label htmlFor="estimatedTime">Estimated Time</label>
+                            <input id="estimatedTime" name="estimatedTime" type="text" ref={estimatedTime} defaultValue=""/>
 
-                            <label for="materialsNeeded">Materials Needed</label>
+                            <label htmlFor="materialsNeeded">Materials Needed</label>
                             <textarea id="materialsNeeded" name="materialsNeeded" ref={materialsNeeded}></textarea>
                         </div>
                     </div>

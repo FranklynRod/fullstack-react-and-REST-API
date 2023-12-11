@@ -24,13 +24,10 @@ export const UserProvider = (props) => {
     }else{
       throw new Error();
     }
-
   }
-
   const signOut = () => {
     setAuthUser(null);
     Cookies.remove("authenticatedUser");
-
   }
 
   return (
