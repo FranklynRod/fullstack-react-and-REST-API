@@ -10,34 +10,37 @@ const CreateCourse = () => {
     const navigate = useNavigate();
     // State
     const title = useRef(null);
-    const courseDescription = useRef(null);
+    const description = useRef(null);
     const estimatedTime = useRef(null);
     const materialsNeeded= useRef(null);
+    const userId = authUser;
     const [errors, setErrors] = useState([]);
 
     //Event handlers
     const handleSubmit = async (e)=>{
         e.preventDefault();
         
-        const user = {
-            id: authUser.id,
+        const course = {
             title: title.current.value,
-            courseDescription: courseDescription.current.value,
+            description: description.current.value,
             estimatedTime: estimatedTime.current.value,
-            materialsNeeded: materialsNeeded.current.value
+            materialsNeeded: materialsNeeded.current.value,
+            userId: userId.id
           }
           try {
-            const response = await api("/api/courses, 'POST", user, authUser)
+            const response = await api("/courses", "POST", course, userId)
             if (response.status === 201){
-              console.log(`${user.title} is successfully created!`)
+              console.log(`${course.title} is successfully created!`)
              navigate("/");
             } else if (response.status === 400){
               const data = await response.json();
               setErrors(data.errors);
             } else{
               throw new Error();
+             
             }
         } catch (error){
+          console.log(error)
           navigate("/error")
           }
         } 
@@ -60,7 +63,7 @@ const CreateCourse = () => {
                             {/* <p>{authUser.firstName}{authUser.lastName}</p> */}
 
                             <label htmlFor="courseDescription">Course Description</label>
-                            <textarea id="courseDescription" name="courseDescription" ref={courseDescription}></textarea>
+                            <textarea id="courseDescription" name="courseDescription" ref={description}></textarea>
                         </div>
                         <div>
                             <label htmlFor="estimatedTime">Estimated Time</label>
