@@ -11,10 +11,10 @@ const CourseDetail = () => {
     const {id} = useParams()
 
     const [courses, setCourses] = useState([]);
-    const [errors, setErrors] = useState([]);
+    const [setErrors] = useState([]);
     const [isLoaded, setisLoaded] = useState(false);
 
-    //FETCH COURSES DATA AND SAVE TO COURSES STATE
+    //fetches courses and set to the initialized courses state
     useEffect(() =>{
         const fetchCourses =  async() => { 
             try {
@@ -33,7 +33,9 @@ const CourseDetail = () => {
           navigate("/error")
           }}
        fetchCourses(); 
-    },[id, navigate])
+    },[id, navigate, setErrors])
+
+    //removes the course information for an authorized user
     const handleDelete = async (e)=>{
         e.preventDefault();
         try {
@@ -46,7 +48,8 @@ const CourseDetail = () => {
           navigate("/error")
           }
         } 
-
+        
+//cancels and returns to courses page
 const handleCancel = (e)=>{
     e.preventDefault();
     navigate("/")
@@ -60,16 +63,15 @@ if(isLoaded){
         {  authUser && authUser.id === courses.userId ? (
            <> 
            <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
-           <a><button className="button" onClick={handleDelete}>Delete Course</button></a>
+           <button className="button" onClick={handleDelete}>Delete Course</button>
            </>
         )
        
         :
         (<> 
           </>)
-        
             }
-            <a><button className="button button-secondary" onClick={handleCancel}>Return to List</button></a>
+            <button className="button button-secondary" onClick={handleCancel}>Return to List</button>
         
         </div>
     </div>

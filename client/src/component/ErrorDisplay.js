@@ -3,7 +3,7 @@ import React from 'react'
 const ErrorDisplay = ({errors}) => {
     let errorsDisplay = null;
 
-    if (errors){
+    if (errors.length){
         errorsDisplay = (
             <>
             <div className="validation--errors">

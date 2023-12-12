@@ -14,6 +14,7 @@ const Courses = () => {
   //   .catch(err => navigate('/error'))
   // },[navigate]);
 
+  //fetches the courses data from the API database
   useEffect(()=>{
     const fetchCourses = async()=>{
       try{

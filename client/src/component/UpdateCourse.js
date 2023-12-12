@@ -18,6 +18,7 @@ const UpdateCourse = () => {
    const [courses, setCourses] = useState();
    const [errors, setErrors] = useState([]);
 
+   //Fetches the courses data from the API database
    useEffect(() =>{
     const fetchCourses =  async() => { 
         try {
@@ -38,7 +39,9 @@ const UpdateCourse = () => {
 },[id, authUserId.id, navigate])
 
 
-   //Event handlers
+   //EVENT HANDLERS
+
+   //Updates the course data, submits and navigates to the courses page once complete. Routes to Error page if error is found.
    const handleSubmit = async (e)=>{
        e.preventDefault();
        
@@ -70,6 +73,8 @@ const UpdateCourse = () => {
          navigate("/error")
          }
        } 
+
+    //cancels and returns to courses page
     const handleCancel = (e)=>{
         e.preventDefault();
         navigate("/")

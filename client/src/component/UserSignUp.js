@@ -14,7 +14,9 @@ const UserSignUp = () => {
   const password = useRef(null);
   const [errors, setErrors] = useState([]);
 
-  // event handlers
+  // EVENT HANDLERS
+
+  //Creates an authorized user. Routes to Error page if error is found.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,6 +46,8 @@ const UserSignUp = () => {
     navigate("/error");
     }
   } 
+
+   //cancels and returns to courses page
   const handleCancel = (e) => {
     e.preventDefault();
     navigate("/")

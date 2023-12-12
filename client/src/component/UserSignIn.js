@@ -17,6 +17,8 @@ const UserSignIn = () => {
     const [errors, setErrors] = useState([]);
   
     // Event Handlers
+
+    //Stores authorized users credentials into actions to allow it to be accessed globally. Routes to Error page if error is found.
     const handleSubmit = async (event) => {
       event.preventDefault();
       let from = '/'
@@ -40,10 +42,10 @@ const UserSignIn = () => {
       }
     }
   
+     //cancels and returns to courses page
     const handleCancel = (event) => {
       event.preventDefault();
       navigate("/");
-  
     }
 
   return (

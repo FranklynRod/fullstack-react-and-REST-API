@@ -8,6 +8,7 @@ import { api } from '../utils/apiHelper';
 const CreateCourse = () => {
     const {authUser} = useContext(UserContext)
     const navigate = useNavigate();
+
     // State
     const title = useRef(null);
     const description = useRef(null);
@@ -16,7 +17,9 @@ const CreateCourse = () => {
     const authUserId = authUser;
     const [errors, setErrors] = useState([]);
 
-    //Event handlers
+    //EVENT HANDLERS
+
+    //Creates a course for authorized users
     const handleSubmit = async (e)=>{
         e.preventDefault();
         
@@ -45,6 +48,7 @@ const CreateCourse = () => {
           }
         } 
 
+    //cancels and returns to courses page
     const handleCancel = (e)=>{
         e.preventDefault();
         navigate("/")
