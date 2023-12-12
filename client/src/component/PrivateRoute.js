@@ -4,7 +4,7 @@ import UserContext from '../context/UserContext';
 import { Navigate, Outlet, useLocation} from 'react-router-dom';
 
 const PrivateRoute = () => {
-    const authUser  = useContext(UserContext);
+    const {authUser } = useContext(UserContext);
     const location = useLocation();
 if (authUser){
     return <Outlet/>
