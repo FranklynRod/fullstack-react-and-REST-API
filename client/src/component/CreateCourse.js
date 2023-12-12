@@ -13,7 +13,7 @@ const CreateCourse = () => {
     const description = useRef(null);
     const estimatedTime = useRef(null);
     const materialsNeeded= useRef(null);
-    const userId = authUser;
+    const authUserId = authUser;
     const [errors, setErrors] = useState([]);
 
     //Event handlers
@@ -25,10 +25,10 @@ const CreateCourse = () => {
             description: description.current.value,
             estimatedTime: estimatedTime.current.value,
             materialsNeeded: materialsNeeded.current.value,
-            userId: userId.id
+            userId: authUserId.id
           }
           try {
-            const response = await api("/courses", "POST", course, userId)
+            const response = await api("/courses", "POST", course, authUserId)
             if (response.status === 201){
               console.log(`${course.title} is successfully created!`)
              navigate("/");
@@ -60,7 +60,7 @@ const CreateCourse = () => {
                             <label htmlFor="courseTitle">Course Title</label>
                             <input id="courseTitle" name="courseTitle" type="text" ref={title} defaultValue=""/>
 
-                            {/* <p>{authUser.firstName}{authUser.lastName}</p> */}
+                            <p>By {authUser.firstName.charAt(0).toUpperCase()+authUser.firstName.slice(1)} {authUser.lastName.charAt(0).toUpperCase()+authUser.lastName.slice(1)}</p>
 
                             <label htmlFor="courseDescription">Course Description</label>
                             <textarea id="courseDescription" name="courseDescription" ref={description}></textarea>

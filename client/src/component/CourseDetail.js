@@ -6,21 +6,23 @@ import { api } from '../utils/apiHelper';
 
 
 const CourseDetail = () => {
-    const [courses, setCourses] = useState({})
-    const [errors, setErrors] = useState({})
-
     const {authUser} = useContext(UserContext)
     const navigate = useNavigate();
     const {id} = useParams()
 
+    const [courses, setCourses] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const [isLoaded, setisLoaded] = useState(false);
+
     //FETCH COURSES DATA AND SAVE TO COURSES STATE
     useEffect(() =>{
-
         const fetchCourses =  async() => { 
             try {
-            const response = await api("/api/courses, 'GET")
+            const response = await api(`/courses/${id}`, "GET")
             if (response.status === 200){
-             setCourses(response.json());
+            const json = await response.json()
+             setCourses(json);
+             setisLoaded(true)
             } else if (response.status === 400){
               const data = await response.json();
               setErrors(data.errors);
@@ -28,17 +30,18 @@ const CourseDetail = () => {
               throw new Error();
             }
         }catch (error){
-          setErrors(['Error. Try again'])
           navigate("/error")
           }}
        fetchCourses(); 
-    })
-  
+    },[id, navigate])
     const handleDelete = async (e)=>{
         e.preventDefault();
         try {
-        const response = await api(`/api/courses/${id}`, "DELETE", null,{})
-        .then(res => navigate('/'))
+        const response = await api(`/courses/${id}`, "DELETE", null, authUser)
+        if (response.status === 204){
+          console.log(`${id} was successfully deleted!`)
+          navigate('/')
+        }
         }catch (error){
           navigate("/error")
           }
@@ -48,20 +51,23 @@ const handleCancel = (e)=>{
     e.preventDefault();
     navigate("/")
 
-}
+};
+if(isLoaded){
   return (
     <main>
     <div className="actions--bar">
         <div className="wrap">
-        {authUser && authUser === id ?
-        <> 
-        <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
-        <a><button className="button" onClick={handleDelete}>Delete Course</button></a>
-        </>
+        {  authUser && authUser.id === courses.userId ? (
+           <> 
+           <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
+           <a><button className="button" onClick={handleDelete}>Delete Course</button></a>
+           </>
+        )
+       
         :
-        <> 
-        </>
-            
+        (<> 
+          </>)
+        
             }
             <a><button className="button button-secondary" onClick={handleCancel}>Return to List</button></a>
         
@@ -95,6 +101,6 @@ const handleCancel = (e)=>{
     </div>
 </main>
   )
- }
+ }};
 
 export default CourseDetail

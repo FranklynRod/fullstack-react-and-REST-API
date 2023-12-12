@@ -1,22 +1,40 @@
 import React from 'react'
 import {useEffect, useState} from "react";
 import {Link, useNavigate} from 'react-router-dom';
+import { api } from '../utils/apiHelper';
 
 
 const Courses = () => {
   const [courses, setCourses] = useState([])
   const navigate = useNavigate();
+  // useEffect(()=>{
+  //   fetch("http://localhost:5000/api/courses")
+  //   .then(res => res.json())
+  //   .then(data => setCourses(data))
+  //   .catch(err => navigate('/error'))
+  // },[navigate]);
 
   useEffect(()=>{
-    fetch("http://localhost:5000/api/courses")
-    .then(res => res.json())
-    .then(data => setCourses(data))
-    .catch(err => navigate('/error'))
-  },[])
+    const fetchCourses = async()=>{
+      try{
+        const response = await api("/courses", "GET")
+        if(response.status === 200){
+          const json = await response.json();
+          setCourses(json);
+        }else if(response.status === 400){
+            navigate("/error")
+        }
+      }
+      catch(error){
+        console.log(error)
+        navigate('/error')
+      }
+    }
+    fetchCourses();
+  },[navigate])
 
   return (
    <div className="wrap main--grid">
-
       {courses.map((course) => (
               <Link className="course--module course--link" key={course.id} to={`/courses/${course.id}`}>
                     <h2 className="course--label">Course</h2>
