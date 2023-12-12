@@ -53,8 +53,8 @@ const UpdateCourse = () => {
          try {
            const response = await api(`/courses/${id}`, "PUT", currCourse, authUserId)
            if (response.status === 204){
-            const data = await response.json();
-            // setCourse(data);
+            // const data = await response.json();
+            // setCourses(data);
             console.log(title)
              console.log(`${courses.title} is successfully updated!`)
             navigate("/");
@@ -82,19 +82,19 @@ const UpdateCourse = () => {
         <div className="main--flex">
             <div>
                 <label htmlFor="courseTitle">Course Title</label>
-                <input id="courseTitle" name="courseTitle" type="text" ref={title} defaultValue={courses.title}/>
+                <input id="courseTitle" name="courseTitle" type="text" ref={title} defaultValue={courses?.title}/>
 
                 <p>By {authUser.firstName.charAt(0).toUpperCase()+authUser.firstName.slice(1)} {authUser.lastName.charAt(0).toUpperCase()+authUser.lastName.slice(1)}</p>
 
                 <label htmlFor="courseDescription">Course Description</label>
-                <textarea id="courseDescription" name="courseDescription" ref={description} defaultValue={courses.description}></textarea>
+                <textarea id="courseDescription" name="courseDescription" ref={description} defaultValue={courses?.description}></textarea>
             </div>
             <div>
                 <label htmlFor="estimatedTime">Estimated Time</label>
-                <input id="estimatedTime" name="estimatedTime" type="text" ref={estimatedTime} defaultValue={courses.estimatedTime}/>
+                <input id="estimatedTime" name="estimatedTime" type="text" ref={estimatedTime} defaultValue={courses?.estimatedTime}/>
 
                 <label htmlFor="materialsNeeded">Materials Needed</label>
-                <textarea id="materialsNeeded" name="materialsNeeded" ref={materialsNeeded} defaultValue={courses.materialsNeeded}></textarea>
+                <textarea id="materialsNeeded" name="materialsNeeded" ref={materialsNeeded} defaultValue={courses?.materialsNeeded}></textarea>
             </div>
         </div>
         <button className="button" type="submit">Update Course</button>

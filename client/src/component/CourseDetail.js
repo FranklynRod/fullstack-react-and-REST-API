@@ -82,7 +82,7 @@ if(isLoaded){
                     <h3 className="course--detail--title">Course</h3>
                 
                     <h4 className="course--name">{courses.title}</h4>
-                    <p>`by ${courses.firstName}${courses.lastName}`</p>
+                    <p>by {courses.firstName} {courses.lastName}</p>
                     <Markdown>{courses.description}</Markdown> 
                 </div>
                 <div>
