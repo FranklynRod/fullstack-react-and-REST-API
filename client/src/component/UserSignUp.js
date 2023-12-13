@@ -53,7 +53,7 @@ const UserSignUp = () => {
     navigate("/")
   }
   return (
-    <div className="htmlForm--centered">
+    <div className="form--centered">
                 <h2>Sign Up</h2>
                  <ErrorDisplay errors={errors} />
                 <form onSubmit={handleSubmit}>

@@ -49,7 +49,8 @@ const UserSignIn = () => {
     }
 
   return (
-    <div className="htmlForm--centered" >
+    <main>
+    <div className="form--centered">
                 <h2>Sign In</h2>
                 <ErrorDisplay errors={errors} />
                 <form onSubmit={handleSubmit}>
@@ -64,6 +65,7 @@ const UserSignIn = () => {
                 <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p> 
                 
             </div>
+            </main> 
   )
 }
 

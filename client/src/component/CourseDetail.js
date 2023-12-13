@@ -84,7 +84,8 @@ if(isLoaded){
                     <h3 className="course--detail--title">Course</h3>
                 
                     <h4 className="course--name">{courses.title}</h4>
-                    <p>By {authUser?.firstName.charAt(0).toUpperCase()+authUser?.firstName.slice(1)} {authUser?.lastName.charAt(0).toUpperCase()+authUser?.lastName.slice(1)}</p>
+                    <p>By {courses.User?.firstName.charAt(0).toUpperCase()+courses.User?.firstName.slice(1)} {courses.User?.lastName.charAt(0).toUpperCase()+
+                    courses.User?.lastName.slice(1)}</p>
                     <Markdown>{courses.description}</Markdown> 
                 </div>
                 <div>
