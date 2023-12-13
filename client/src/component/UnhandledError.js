@@ -1,6 +1,8 @@
 import React from 'react'
 
 const Error = () => {
+
+//Error route that displays when server error happens
   return (
     <main>
     <div className="wrap">

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ErrorDisplay = ({errors}) => {
+  //Errors will display message  if errors length is greater than 0
     let errorsDisplay = null;
 
     if (errors.length){

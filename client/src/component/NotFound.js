@@ -1,6 +1,7 @@
 import React from 'react'
 
 const NotFound = () => {
+  //JSX to display not found message when an unlabled route is searched
   return (
     <main>
     <div class="wrap">

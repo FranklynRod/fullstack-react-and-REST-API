@@ -7,14 +7,7 @@ import { api } from '../utils/apiHelper';
 const Courses = () => {
   const [courses, setCourses] = useState([])
   const navigate = useNavigate();
-  // useEffect(()=>{
-  //   fetch("http://localhost:5000/api/courses")
-  //   .then(res => res.json())
-  //   .then(data => setCourses(data))
-  //   .catch(err => navigate('/error'))
-  // },[navigate]);
-
-  //fetches the courses data from the API database
+  
   useEffect(()=>{
     const fetchCourses = async()=>{
       try{

@@ -56,8 +56,6 @@ const UpdateCourse = () => {
          try {
            const response = await api(`/courses/${id}`, "PUT", currCourse, authUserId)
            if (response.status === 204){
-            // const data = await response.json();
-            // setCourses(data);
             console.log(title)
              console.log(`${courses.title} is successfully updated!`)
             navigate("/");
